@@ -1,0 +1,2 @@
+g++ -I /Users/amuralid/SFML-2.4.2-osx-clang/include -std=c++11 -o minimal_ex minimal_ex.cc -L /Users/amuralid/SFML-2.4.2-osx-clang/lib -L/usr/local/Cellar/freetype/2.8.1/lib -lsfml-system -lsfml-window -lsfml-graphics
+export LD_LIBRARY_PATH=/Users/amuralid/SFML-2.4.2-osx-clang/lib:/usr/local/Cellar/freetype/2.8.1/lib:/Users/amuralid/SFML-2.4.2-osx-clang/lib:/usr/local/Cellar/freetype/2.8.1/lib:/Users/amuralid/SFML-2.4.2-osx-clang/lib:
