@@ -38,7 +38,7 @@ Game::Game()
   , player_()
 {
 
-  if (!texture_.loadFromFile("./eagle.jpg")) {
+  if (!texture_.loadFromFile("./Textures/Eagle.png")) {
     std::cerr << "Failed to load eagle.jpg" << std::endl;
     exit(1);
   }
