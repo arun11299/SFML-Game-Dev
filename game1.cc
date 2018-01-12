@@ -23,6 +23,10 @@ private: //Key press actions
 private:
   sf::RenderWindow window_;
 
+  //Texture saves the image in video memory
+  //sf::Image on the other hand stores the image in RAM
+  //texture_.loadFromX() is basically a combination of
+  //sff:Image::loadFromX() and texture.loadFromImage()
   sf::Texture      texture_;
   sf::Sprite       player_;
 
