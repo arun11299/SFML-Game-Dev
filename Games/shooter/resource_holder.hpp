@@ -1,0 +1,4 @@
+#ifndef RESOURCE_HOLDER_HPP
+#define RESOURCE_HOLDER_HPP
+
+#endif 
