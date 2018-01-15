@@ -41,6 +41,14 @@ public:
     return velocity_;
   }
 
+  /**
+   * Update the position of the current entity on the scene frame.
+   */
+  void update_current(sf::Time dt) override
+  {
+    move(velocity_ * dt.asSeconds());
+  }
+
 private:
   sf::Vector2f velocity_;
 };

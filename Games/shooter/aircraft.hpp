@@ -20,6 +20,8 @@ public:
   {
     auto& resource = res_hldr.get(type);
     aircraft_.setTexture(resource);
+    sf::FloatRect bounds = aircraft_.getLocalBounds();
+    aircraft_.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
   }
 
   Aircraft(const Aircraft& other) = default;

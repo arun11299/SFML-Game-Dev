@@ -74,6 +74,15 @@ public:
     return res;
   }
 
+  /**
+   * Update the scene
+   */
+  void update(sf::Time dt)
+  {
+    update_current(dt);
+    update_children(dt);
+  }
+
 private:
   /**
    */
@@ -102,7 +111,45 @@ private:
     // Upto the derived implementations
   }
 
+  /**
+   */
+  virtual void update_current(sf::Time dt)
+  {
+    // Do nothing
+    // Upto the derived implementation
+    (void)dt;
+  }
 
+  /**
+   */
+  void update_children(sf::Time dt)
+  {
+    for (auto& e : children_) e->update(dt);
+  }
+
+  /**
+   */
+  sf::Transform get_world_transform() const
+  {
+    sf::Transform transform = sf::Transform::Identity;
+    for (const SceneNode* n = this; n; n = n->parent_)
+    {
+      transform = transform * getTransform();
+    }
+    return transform;
+  }
+
+  /**
+   * Gets the absolute position of an object.
+   * this->getPosition() gives the relative position w.r.t
+   * top level object.
+   * We will traverse up the graph using the parent_ pointer
+   * to accumulate the relative positions.
+   */
+  sf::Vector2f get_world_position() const
+  {
+    return get_world_transform() * sf::Vector2f{};
+  }
 
 private:
   std::vector<std::unique_ptr<SceneNode>> children_;
