@@ -59,7 +59,7 @@ public:
   std::unique_ptr<SceneNode> detach_child(const SceneNode& node)
   {
     auto itr = std::find_if(std::begin(children_), std::end(children_),
-                            [&](const auto& elem) {
+                            [&](const std::unique_ptr<SceneNode>& elem) {
                               return std::addressof(node) == elem.get();
                            });
 

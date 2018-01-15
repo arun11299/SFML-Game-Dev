@@ -8,6 +8,7 @@
 #include <exception>
 
 #include "resource_identifiers.hpp"
+#include "SFML/Graphics.hpp"
 
 namespace arnml {
 
@@ -29,18 +30,7 @@ public:
    * Loads a resource into the resource map.
    * If the resource loading fails it returns false.
    */
-  bool load_resource(ResourceID id, const std::string& filename)
-  {
-    std::unique_ptr<ResourceType> res{new ResourceType{}};
-    if (!res->loadFromFile(filename)) {
-      return false;
-    }
-
-    bool ok = res_map_.insert({id, std::move(res)});
-    assert (ok);
-
-    return true;
-  }
+  bool load_resource(ResourceID id, const std::string& filename);
 
   /**
    * Removes a resource from the map.
@@ -58,7 +48,7 @@ public:
   ResourceType& get(ResourceID id)
   {
     auto itr = res_map_.find(id);
-    assert (itr != std::end(id));
+    assert (itr != std::end(res_map_));
 
     return *(itr->second.get());
   }
@@ -77,5 +67,7 @@ private:
 };
 
 } // END namespace arnml
+
+#include "impl/resource_holder.ipp"
 
 #endif 

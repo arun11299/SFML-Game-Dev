@@ -88,10 +88,6 @@ void Game::process_events()
       default:
         continue;
     };
-
-    if (event.type == sf::Event::Closed) {
-      window_.close();
-    }
   }
   return;
 }

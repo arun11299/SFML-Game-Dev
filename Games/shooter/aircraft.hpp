@@ -2,6 +2,7 @@
 #define AIRCRAFT_HPP
 
 #include "entity.hpp"
+#include "resource_identifiers.hpp"
 #include "SFML/Graphics.hpp"
 
 namespace arnml {
@@ -13,15 +14,12 @@ class Aircraft: public Entity
 public:
   /**
    */
-  enum class type
-  {
-    Eagle,
-    Raptor,
-  };
-
-  explicit Aircraft(Aircraft::type type)
+  template <typename ResourceHolder>
+  explicit Aircraft(textures::ID type, ResourceHolder& res_hldr)
     : type_(type)
   {
+    auto& resource = res_hldr.get(type);
+    aircraft_.setTexture(resource);
   }
 
   Aircraft(const Aircraft& other) = default;
@@ -35,12 +33,12 @@ public:
   virtual void draw_current(sf::RenderTarget& target,
                             sf::RenderStates states) const override
   {
-    target.draw(states);
+    target.draw(aircraft_, states);
   }
 
 private:
   /// Type of aircraft
-  Aircraft::type type_;
+  textures::ID type_;
   ///
   sf::Sprite aircraft_;
 };
