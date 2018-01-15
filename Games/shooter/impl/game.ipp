@@ -71,7 +71,8 @@ void Game::update(sf::Time delta)
     movement.x -= speed;
   }
 
-  entity_->move(movement * delta.asSeconds());
+  entity_->set_velocity(movement);
+  entity_->update(delta);
   return;
 }
 
