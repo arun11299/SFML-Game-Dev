@@ -13,10 +13,24 @@ public:
   /**
    */
   template <typename ResourceID, typename ResourceLoader>
-  explicit SpriteNode(ResourceID id, ResourceLoader& loader)
+  explicit SpriteNode(ResourceID id, ResourceLoader& loader, bool repeat=false)
   {
     auto& resource = loader.get(id);
+    if (repeat) {
+      resource.setRepeated(true);
+    }
     background_sprite_.setTexture(resource);
+  }
+
+  template <typename ResourceID, typename ResourceLoader>
+  explicit SpriteNode(ResourceID id, ResourceLoader& loader, sf::IntRect& rect, bool repeat=false)
+  {
+    auto& resource = loader.get(id);
+    if (repeat) {
+      resource.setRepeated(true);
+    }
+    background_sprite_.setTexture(resource);
+    background_sprite_.setTextureRect(rect);
   }
 
   SpriteNode(const SpriteNode& other) = delete;

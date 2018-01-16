@@ -1,0 +1,85 @@
+#ifndef WORLD_HPP
+#define WORLD_HPP
+
+#include <array>
+
+#include "entity.hpp"
+#include "aircraft.hpp"
+#include "scene_graph.hpp"
+#include "sprite_node.hpp"
+#include "resource_holder.hpp"
+#include "resource_identifiers.hpp"
+
+#include "SFML/Graphics.hpp"
+
+namespace arnml {
+
+using TextureHolder = ResourceHolder<sf::Texture, textures::ID>;
+
+/**
+ */
+class World
+{
+public:
+  /**
+   */
+  explicit World(sf::RenderWindow& w);
+
+  /// Disable copy and assignment
+  World(const World& other) = delete;
+  World& operator=(const World& other) = delete;
+
+  ~World() = default;
+
+public:
+  ///
+  void update(sf::Time dt);
+
+  ///
+  void draw();
+
+private:
+  ///
+  void load_textures();
+
+  ///
+  void build_scene();
+
+private:
+  /**
+   */
+  enum Layer
+  {
+    Background,
+    Air,
+    LayerCount,
+  };
+
+private:
+  ///
+  sf::RenderWindow& window_;
+  ///
+  TextureHolder     textures_;
+  ///
+  sf::View          world_view_;
+  ///
+  SceneNode         scene_graph_;
+  ///
+  std::array<SceneNode*, LayerCount> scene_layers_;
+
+  ///
+  sf::FloatRect world_bounds_;
+  ///
+  sf::Vector2f  start_pos_;
+  ///
+  float         scroll_speed_;
+  ///
+  Aircraft*     player_ = nullptr;
+  
+};
+
+} // END namespace arnml
+
+#include "impl/world.ipp"
+
+#endif

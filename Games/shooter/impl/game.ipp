@@ -8,15 +8,19 @@ namespace arnml {
 
 Game::Game()
   : window_(sf::VideoMode{640, 480}, "My Game")
+  , world_(window_)
 {
 }
 
 template <typename Resource, typename ResourceID, typename ResourceLoader>
 void Game::create_entity(ResourceID id, ResourceLoader& loader)
 {
+  /*
   assert (!entity_);
   entity_.reset(new Resource{id, loader});
   entity_->setPosition(100.f, 100.f);
+  */
+  assert (0 && "Code not used");
 }
 
 void Game::run()
@@ -71,15 +75,15 @@ void Game::update(sf::Time delta)
     movement.x -= speed;
   }
 
-  entity_->set_velocity(movement);
-  entity_->update(delta);
+  //entity_->set_velocity(movement);
+  world_.update(delta);
   return;
 }
 
 void Game::render()
 {
   window_.clear();
-  window_.draw(*entity_);
+  world_.draw();
   window_.display();
   return;
 }

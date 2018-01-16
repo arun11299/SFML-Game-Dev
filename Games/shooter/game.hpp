@@ -1,6 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include "world.hpp"
 #include "entity.hpp"
 #include "SFML/Graphics.hpp"
 
@@ -53,8 +54,11 @@ private:
   /// Rendering window
   sf::RenderWindow window_;
 
+  /// World
+  World world_;
+
   /// TODO: multiple entities
-  std::unique_ptr<Entity> entity_ = nullptr;
+  //std::unique_ptr<Entity> entity_ = nullptr;
 
   //position
   bool is_moving_up_    = false;
