@@ -49,7 +49,7 @@ void World::build_scene()
   std::unique_ptr<Aircraft> leader{new Aircraft{textures::ID::Eagle, textures_}};
   player_ = leader.get();
   player_->setPosition(start_pos_);
-  player_->set_velocity(40.f, scroll_speed_);
+  player_->set_velocity(0.f, scroll_speed_);
   scene_layers_[Air]->add_child(std::move(leader));
 
   //Adding left escort

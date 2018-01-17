@@ -72,7 +72,7 @@ private:
   ///
   sf::Vector2f  start_pos_;
   ///
-  float         scroll_speed_;
+  float         scroll_speed_ = -100.f;
   ///
   Aircraft*     player_ = nullptr;
   
