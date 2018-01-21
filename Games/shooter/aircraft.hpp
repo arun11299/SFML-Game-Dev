@@ -2,6 +2,7 @@
 #define AIRCRAFT_HPP
 
 #include "entity.hpp"
+#include "categories.hpp"
 #include "resource_identifiers.hpp"
 #include "SFML/Graphics.hpp"
 
@@ -36,6 +37,20 @@ public:
                             sf::RenderStates states) const override
   {
     target.draw(aircraft_, states);
+  }
+
+  /**
+   */
+  virtual uint32_t category() const noexcept override
+  {
+    switch (type_) {
+    case textures::ID::Eagle:
+      return Category::PlayerAircraft;
+    default:
+      return Category::EnemyAircraft;
+    };
+
+    assert (0 && "Code Not Reached");
   }
 
 private:

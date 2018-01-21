@@ -5,6 +5,9 @@
 #include <vector>
 #include <cassert>
 #include <algorithm>
+
+#include "command.hpp"
+#include "categories.hpp"
 #include "SFML/Graphics.hpp"
 
 namespace arnml {
@@ -81,6 +84,26 @@ public:
   {
     update_current(dt);
     update_children(dt);
+  }
+
+  /**
+   * Get the category of the game object.
+   */
+  virtual uint32_t category() const noexcept
+  {
+    return Category::Scene;
+  }
+
+  /**
+   * Execute the command
+   */
+  void on_command(const Command& cmd, sf::Time dt)
+  {
+    if (category() & cmd.category_) {
+      cmd.action_(*this, dt);
+    }
+    
+    for (auto& e : children_) e->on_command(cmd, dt);
   }
 
 private:
