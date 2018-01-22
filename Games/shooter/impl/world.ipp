@@ -81,6 +81,10 @@ void World::update(sf::Time dt)
     player_->set_velocity(velocity);
   }
 
+  while (!cmd_q_.is_empty()) {
+    scene_graph_.on_command(cmd_q_.pop(), dt);
+  }
+
   scene_graph_.update(dt);
 }
 

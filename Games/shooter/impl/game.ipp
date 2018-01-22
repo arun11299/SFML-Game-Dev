@@ -39,6 +39,20 @@ void Game::run()
 void Game::process_events()
 {
   sf::Event event;
+  auto& cmd_q = world_.get_command_q();
+
+  while (window_.pollEvent(event)) {
+    player_.handle_event(event, cmd_q);
+
+    if (event.type == sf::Event::Closed) {
+      window_.close();
+      break;
+    }
+  }
+
+  player_.handle_realtime_input(cmd_q);
+
+#if 0
   while (window_.pollEvent(event)) {
     switch (event.type) {
     case sf::Event::Closed:
@@ -54,6 +68,7 @@ void Game::process_events()
       continue;
     };
   }
+#endif
   return;
 }
 

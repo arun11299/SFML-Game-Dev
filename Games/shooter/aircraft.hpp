@@ -53,11 +53,39 @@ public:
     assert (0 && "Code Not Reached");
   }
 
+  /**
+   */
+  void accelerate(sf::Vector2f velocity)
+  {
+    this->set_velocity(this->get_velocity() + velocity);
+  }
+
 private:
   /// Type of aircraft
   textures::ID type_;
   ///
   sf::Sprite aircraft_;
+};
+
+
+/**
+ * Aircraft mover action class.
+ * Called in response to an action
+ */
+struct AircraftMover
+{
+  AircraftMover(float x, float y)
+    : velocity_(x, y)
+  {
+  }
+
+  void operator()(Aircraft& ac, sf::Time dt)
+  {
+    (void)dt;
+    ac.accelerate(velocity_);
+  }
+
+  sf::Vector2f velocity_;
 };
 
 } // END namespace arnml

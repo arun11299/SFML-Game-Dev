@@ -4,6 +4,8 @@
 #include <array>
 
 #include "entity.hpp"
+#include "player.hpp"
+#include "command.hpp"
 #include "aircraft.hpp"
 #include "scene_graph.hpp"
 #include "sprite_node.hpp"
@@ -37,6 +39,12 @@ public:
 
   ///
   void draw();
+
+  ///
+  CommandQueue& get_command_q() noexcept
+  {
+    return cmd_q_;
+  }
 
 private:
   ///
@@ -75,7 +83,10 @@ private:
   float         scroll_speed_ = -100.f;
   ///
   Aircraft*     player_ = nullptr;
-  
+  ///
+  CommandQueue  cmd_q_;
+  ///
+  Player        player_;
 };
 
 } // END namespace arnml
