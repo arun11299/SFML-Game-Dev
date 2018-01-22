@@ -59,4 +59,6 @@ private:
 
 } // END namespace arnml
 
+#include "impl/player.ipp"
+
 #endif

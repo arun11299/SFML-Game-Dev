@@ -1,6 +1,8 @@
 #ifndef WORLD_IPP
 #define WORLD_IPP
 
+#include "../world.hpp"
+
 namespace arnml {
 
 World::World(sf::RenderWindow& w)
@@ -88,6 +90,6 @@ void World::update(sf::Time dt)
   scene_graph_.update(dt);
 }
 
-}
+} //END namespace arnml
 
 #endif
