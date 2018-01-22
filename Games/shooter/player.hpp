@@ -1,6 +1,8 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
+#include <map>
+
 #include "command.hpp"
 #include "SFML/Graphics.hpp"
 
@@ -16,8 +18,22 @@ class Player
 {
 public:
   ///
-  Player() = default;
+  Player();
   ~Player() = default;
+
+public:
+
+  /**
+   * Actions to respond to
+   */
+  enum class Action
+  {
+    MoveUp = 0,
+    MoveDown,
+    MoveLeft,
+    MoveRight,
+  };
+
 public:
   /**
    * Handles event for a player.
@@ -28,6 +44,17 @@ public:
    * Handle real time inputs for a player
    */
   void handle_realtime_input(CommandQueue& cmd_q);
+
+private:
+  /// Initialize action_2_cmd_bindings_ with relevent actions
+  void init_actions();
+
+  // Check if the event is real time action or not
+  bool is_real_time_action(Action action);
+
+private:
+  std::map<sf::Keyboard::Key, Action> key_to_action_bindings_;
+  std::map<Action, Command> action_2_cmd_bindings_;
 };
 
 } // END namespace arnml
