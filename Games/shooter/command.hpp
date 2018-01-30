@@ -20,7 +20,7 @@ struct Command
 {
   /**
    */
-  Command();
+  Command() = default;
   ///
   std::function<void(SceneNode&, sf::Time)> action_;
   ///

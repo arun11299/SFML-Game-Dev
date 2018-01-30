@@ -85,8 +85,6 @@ private:
   Aircraft*     player_ = nullptr;
   ///
   CommandQueue  cmd_q_;
-  ///
-  Player        player_;
 };
 
 } // END namespace arnml

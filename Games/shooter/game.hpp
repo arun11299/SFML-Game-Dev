@@ -3,6 +3,7 @@
 
 #include "world.hpp"
 #include "entity.hpp"
+#include "player.hpp"
 #include "SFML/Graphics.hpp"
 
 namespace arnml {
@@ -65,6 +66,9 @@ private:
   bool is_moving_down_  = false;
   bool is_moving_right_ = false;
   bool is_moving_left_  = false;
+
+  ///
+  Player player_;
 };
 
 } // END namespace arnml

@@ -22,9 +22,8 @@ template <typename GObj, typename Fn>
 std::function<void (SceneNode&, sf::Time)>
 derived_action(Fn f)
 {
-  assert (dynamic_cast<GObj*>(&node) != nullptr);
-
   return [=](SceneNode& n, sf::Time dt) {
+    assert (dynamic_cast<GObj*>(&n) != nullptr);
     auto& obj = static_cast<GObj&>(n);
     f(obj, dt);
   };

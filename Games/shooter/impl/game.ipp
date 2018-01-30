@@ -77,6 +77,7 @@ void Game::update(sf::Time delta)
   sf::Vector2f movement{0.f, 0.f};
   static const float speed = 50.f;
 
+  /*
   if (is_moving_up_) {
     movement.y -= speed;
   }
@@ -89,6 +90,7 @@ void Game::update(sf::Time delta)
   if (is_moving_left_) {
     movement.x -= speed;
   }
+  */
 
   //entity_->set_velocity(movement);
   world_.update(delta);
