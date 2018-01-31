@@ -61,7 +61,7 @@ public: // Interface APIs
   ///
   virtual bool handle_event(sf::Event event) = 0;
 
-private: // Implementations
+protected: // Implementations
   ///
   void request_stack_push(Category::States id);
   ///
