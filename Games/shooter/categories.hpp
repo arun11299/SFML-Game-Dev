@@ -22,6 +22,10 @@ namespace Category {
    */
   enum States
   {
+    Title,
+    Menu,
+    Game,
+    Pause,
   };
 }
 
