@@ -43,7 +43,7 @@ void World::build_scene()
 
   //Add the backgraound sprite to the scene
   sf::IntRect texture_rect{world_bounds_};
-  std::unique_ptr<SpriteNode> bgsprite{new SpriteNode(textures::ID::Desert, textures_, texture_rect)};
+  std::unique_ptr<SpriteNode> bgsprite{new SpriteNode(bg, texture_rect)};
   bgsprite->setPosition(world_bounds_.left, world_bounds_.top);
   scene_layers_[Background]->add_child(std::move(bgsprite));
 
@@ -82,10 +82,6 @@ void World::update(sf::Time dt)
       || position.x >= world_bounds_.left + world_bounds_.width - 150) {
     velocity.x = -1 * velocity.x;
     player_->set_velocity(velocity);
-  }
-
-  if (world_view_.getCenter().y < 1000) {
-    world_view_.reset(sf::FloatRect(0.f, 0.f, window_.getSize().x , window_.getSize().y));
   }
 
   while (!cmd_q_.is_empty()) {

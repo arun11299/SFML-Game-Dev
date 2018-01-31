@@ -25,6 +25,8 @@ public:
   SceneNode(const SceneNode& other) = delete;
   SceneNode& operator=(const SceneNode& other) = delete;
 
+  virtual ~SceneNode() = default;
+
 public:
   ///Get number of children under this
   ///scene node.
@@ -104,6 +106,14 @@ public:
     }
     
     for (auto& e : children_) e->on_command(cmd, dt);
+  }
+
+  /**
+   */
+  virtual void set_position(float x, float y)
+  {
+    (void)x;
+    (void)y;
   }
 
 private:

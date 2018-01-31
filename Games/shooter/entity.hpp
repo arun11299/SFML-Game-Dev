@@ -17,6 +17,7 @@ public:
   Entity() = default;
   Entity(const Entity&) = default;
   Entity& operator=(const Entity&) = default;
+  virtual ~Entity() = default;
 
 public:
   /**

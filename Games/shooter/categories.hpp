@@ -4,6 +4,10 @@
 namespace arnml {
 
 namespace Category {
+  /**
+   * Types of aircraft entities in the
+   * game.
+   */
   enum Type
   {
     None = 0,
@@ -11,6 +15,13 @@ namespace Category {
     PlayerAircraft,
     AlliedAircraft,
     EnemyAircraft,
+  };
+
+
+  /**
+   */
+  enum States
+  {
   };
 }
 

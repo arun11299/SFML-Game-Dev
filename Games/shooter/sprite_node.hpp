@@ -2,6 +2,7 @@
 #define SPRITE_NODE_HPP
 
 #include "scene_graph.hpp"
+#include "SFML/Graphics.hpp"
 
 namespace arnml {
 
@@ -22,14 +23,9 @@ public:
     background_sprite_.setTexture(resource);
   }
 
-  template <typename ResourceID, typename ResourceLoader>
-  explicit SpriteNode(ResourceID id, ResourceLoader& loader, sf::IntRect& rect, bool repeat=false)
+  explicit SpriteNode(sf::Texture& texture, sf::IntRect& rect)
   {
-    auto& resource = loader.get(id);
-    if (repeat) {
-      resource.setRepeated(true);
-    }
-    background_sprite_.setTexture(resource);
+    background_sprite_.setTexture(texture);
     background_sprite_.setTextureRect(rect);
   }
 
@@ -49,6 +45,12 @@ public:
   void update_current(sf::Time dt) override
   {
     (void)dt;
+  }
+
+  ///
+  void set_position(float x, float y) override
+  {
+    background_sprite_.setPosition(sf::Vector2f{x, y});
   }
 
 private:
