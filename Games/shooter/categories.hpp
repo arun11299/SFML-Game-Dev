@@ -20,8 +20,9 @@ namespace Category {
 
   /**
    */
-  enum States
+  enum class States
   {
+    None,
     Title,
     Menu,
     Game,

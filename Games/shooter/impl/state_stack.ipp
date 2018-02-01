@@ -27,6 +27,21 @@ StateStack::create_state(Category::States id)
   return itr->second();
 }
 
+void StateStack::push_state(Category::States id)
+{
+  pending_list_.push_back(PendingChange{Action::PUSH, id});
+}
+
+void StateStack::pop_state()
+{
+  pending_list_.push_back(PendingChange{Action::POP});
+}
+
+void StateStack::clear_states()
+{
+  pending_list_.push_back(PendingChange{Action::CLEAR});
+}
+
 void StateStack::handle_event(sf::Event event)
 {
   for (auto& state : stack_) {

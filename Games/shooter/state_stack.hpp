@@ -65,6 +65,11 @@ private:
   ///
   struct PendingChange
   {
+    explicit PendingChange(Action act, Category::States id = Category::States::None)
+      : action_(act)
+      , state_id_(id)
+    {
+    }
     Action action_;
     Category::States state_id_;
   };
