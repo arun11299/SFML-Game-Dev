@@ -2,7 +2,6 @@
 #define GAME_HPP
 
 #include "world.hpp"
-#include "entity.hpp"
 #include "player.hpp"
 #include "SFML/Graphics.hpp"
 

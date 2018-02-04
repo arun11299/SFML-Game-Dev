@@ -12,6 +12,7 @@
 #include "resource_holder.hpp"
 #include "resource_identifiers.hpp"
 
+#include "SFML/System/String.hpp"
 #include "SFML/Graphics.hpp"
 
 namespace arnml {

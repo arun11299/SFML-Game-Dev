@@ -1,8 +1,5 @@
-#ifndef GAME_IPP
-#define GAME_IPP
-
 #include <cassert>
-#include "SFML/Graphics.hpp"
+#include "../game.hpp"
 
 namespace arnml {
 
@@ -15,11 +12,6 @@ Game::Game()
 template <typename Resource, typename ResourceID, typename ResourceLoader>
 void Game::create_entity(ResourceID id, ResourceLoader& loader)
 {
-  /*
-  assert (!entity_);
-  entity_.reset(new Resource{id, loader});
-  entity_->setPosition(100.f, 100.f);
-  */
   assert (0 && "Code not used");
 }
 
@@ -52,47 +44,11 @@ void Game::process_events()
 
   player_.handle_realtime_input(cmd_q);
 
-#if 0
-  while (window_.pollEvent(event)) {
-    switch (event.type) {
-    case sf::Event::Closed:
-      window_.close();
-      break;
-    case sf::Event::KeyPressed:
-      handle_key_press(event.key.code, true/*key_pressed*/);
-      break;
-    case sf::Event::KeyReleased:
-      handle_key_press(event.key.code, false/*key released*/);
-      break;
-    default:
-      continue;
-    };
-  }
-#endif
   return;
 }
 
 void Game::update(sf::Time delta)
 {
-  sf::Vector2f movement{0.f, 0.f};
-  static const float speed = 50.f;
-
-  /*
-  if (is_moving_up_) {
-    movement.y -= speed;
-  }
-  if (is_moving_down_) {
-    movement.y += speed;
-  }
-  if (is_moving_right_) {
-    movement.x += speed;
-  }
-  if (is_moving_left_) {
-    movement.x -= speed;
-  }
-  */
-
-  //entity_->set_velocity(movement);
   world_.update(delta);
   return;
 }
@@ -131,5 +87,3 @@ void Game::handle_key_press(sf::Keyboard::Key key, bool key_pressed)
 }
 
 } // END namespace arnml
-
-#endif

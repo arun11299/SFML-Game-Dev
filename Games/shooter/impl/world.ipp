@@ -2,6 +2,8 @@
 #define WORLD_IPP
 
 #include "../world.hpp"
+#include "SFML/System/String.hpp"
+#include "../resource_holder.hpp"
 
 namespace arnml {
 
@@ -24,9 +26,9 @@ World::World(sf::RenderWindow& w)
 
 void World::load_textures()
 {
-  textures_.load_resource(textures::ID::Eagle, "./images/Eagle.png");
-  textures_.load_resource(textures::ID::Desert, "./images/Desert.png");
-  textures_.load_resource(textures::ID::Raptor, "./images/Raptor.png");
+  textures_.load_resource(textures::ID::Eagle, sf::String{"./images/Eagle.png"});
+  textures_.load_resource(textures::ID::Desert, sf::String{"./images/Desert.png"});
+  textures_.load_resource(textures::ID::Raptor, sf::String{"./images/Raptor.png"});
 }
 
 void World::build_scene()
