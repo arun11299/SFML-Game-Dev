@@ -50,5 +50,7 @@ private:
 
 } // END namespace arnml
 
+#include "impl/menu_state.ipp"
+
 
 #endif
